@@ -1,0 +1,1568 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Build Chabad Chayil - Hand in Hand. Foot by Foot!</title>
+    <meta name="description" content="Join the Chabad Chayil building campaign. Support our new 5-story community center with dedications, square feet, and donations.">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --chabad-blue: #4b6079;
+            --chabad-sand: #eee3c9;
+            --chabad-gray: #6b7280;
+            --white: #ffffff;
+            --gray-50: #f9fafb;
+            --gray-100: #f3f4f6;
+            --gray-200: #e5e7eb;
+            --gray-300: #d1d5db;
+            --gray-900: #111827;
+            --primary-gradient: linear-gradient(135deg, #4b6079 0%, #5a7084 100%);
+            --sand-gradient: linear-gradient(135deg, #eee3c9 0%, #f5f0dc 100%);
+            --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+            --shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+            --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+            --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            color: var(--gray-900);
+            background-color: var(--white);
+            overflow-x: hidden;
+        }
+
+        .font-heading {
+            font-family: 'Playfair Display', serif;
+        }
+
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 50;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--gray-200);
+            transition: all 0.3s ease;
+        }
+
+        .navbar.scrolled {
+            background: rgba(255, 255, 255, 0.98);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 4rem;
+        }
+
+        .nav-logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--chabad-blue);
+            text-decoration: none;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+            list-style: none;
+        }
+
+        .nav-link {
+            color: var(--chabad-gray);
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            transition: all 0.2s ease;
+            position: relative;
+        }
+
+        .nav-link:hover,
+        .nav-link.active {
+            color: var(--chabad-blue);
+            background-color: var(--chabad-sand);
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -0.25rem;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: var(--chabad-blue);
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
+
+        .nav-link:hover::after,
+        .nav-link.active::after {
+            width: 80%;
+        }
+
+        .donate-btn {
+            background: var(--primary-gradient);
+            color: var(--white);
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow);
+        }
+
+        .donate-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-xl);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--chabad-blue);
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: var(--primary-gradient);
+            color: var(--white);
+            padding: 8rem 0 6rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml;utf8,<svg viewBox="0 0 1000 1000" xmlns="http://www.w3.org/2000/svg"><polygon fill="rgba(255,255,255,0.03)" points="0,0 1000,300 1000,1000 0,700"/></svg>');
+            background-size: cover;
+        }
+
+        .hero-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero h1 {
+            font-size: clamp(3rem, 8vw, 5rem);
+            font-weight: 700;
+            margin-bottom: 1rem;
+            line-height: 1.1;
+            font-family: 'Playfair Display', serif;
+            opacity: 0;
+            animation: slideUp 1s ease 0.2s forwards;
+        }
+
+        .hero h2 {
+            font-size: clamp(1.25rem, 4vw, 2rem);
+            color: var(--chabad-sand);
+            margin-bottom: 2rem;
+            font-weight: 400;
+            opacity: 0;
+            animation: slideUp 1s ease 0.4s forwards;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            max-width: 700px;
+            margin: 0 auto 3rem;
+            line-height: 1.7;
+            opacity: 0;
+            animation: slideUp 1s ease 0.6s forwards;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 4rem;
+            opacity: 0;
+            animation: slideUp 1s ease 0.8s forwards;
+        }
+
+        .btn {
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 0.75rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .btn:hover::before {
+            left: 100%;
+        }
+
+        .btn-primary {
+            background: var(--chabad-sand);
+            color: var(--chabad-blue);
+        }
+
+        .btn-primary:hover {
+            background: var(--white);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-xl);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--white);
+            border: 2px solid var(--white);
+        }
+
+        .btn-secondary:hover {
+            background: var(--white);
+            color: var(--chabad-blue);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-xl);
+        }
+
+        /* Progress Card */
+        .progress-card {
+            background: var(--white);
+            border-radius: 1rem;
+            padding: 2rem;
+            box-shadow: var(--shadow-xl);
+            max-width: 500px;
+            margin: 0 auto;
+            opacity: 0;
+            animation: slideUp 1s ease 1s forwards;
+        }
+
+        .progress-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .progress-label {
+            font-weight: 600;
+            color: var(--chabad-gray);
+        }
+
+        .progress-percentage {
+            font-weight: 700;
+            color: var(--chabad-blue);
+            font-size: 1.25rem;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 1rem;
+            background: var(--gray-200);
+            border-radius: 0.5rem;
+            overflow: hidden;
+            margin-bottom: 1rem;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: var(--primary-gradient);
+            width: 0%;
+            transition: width 2s ease 1.5s;
+            border-radius: 0.5rem;
+        }
+
+        .progress-amounts {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.9rem;
+            color: var(--chabad-gray);
+        }
+
+        .amount-raised {
+            font-weight: 600;
+        }
+
+        /* Section Styles */
+        .section {
+            padding: 5rem 0;
+            display: block;
+        }
+
+        .section.hidden {
+            display: none;
+        }
+
+        .section:nth-child(even) {
+            background: var(--gray-50);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-title {
+            font-size: clamp(2rem, 5vw, 3rem);
+            font-weight: 700;
+            color: var(--chabad-blue);
+            margin-bottom: 1rem;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .section-subtitle {
+            font-size: 1.25rem;
+            color: var(--chabad-gray);
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.7;
+        }
+
+        /* Grid Layouts */
+        .grid {
+            display: grid;
+            gap: 2rem;
+        }
+
+        .grid-3 {
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        }
+
+        .grid-2 {
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+        }
+
+        /* Card Styles */
+        .card {
+            background: var(--white);
+            border-radius: 1rem;
+            box-shadow: var(--shadow);
+            overflow: hidden;
+            transition: all 0.3s ease;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .card.animate-in {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .card:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: var(--shadow-xl);
+        }
+
+        .card-image {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover .card-image {
+            transform: scale(1.1);
+        }
+
+        .card-content {
+            padding: 2rem;
+        }
+
+        .card-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--chabad-blue);
+            margin-bottom: 0.5rem;
+        }
+
+        .card-date {
+            font-size: 0.9rem;
+            color: var(--chabad-gray);
+            margin-bottom: 1rem;
+        }
+
+        .card-text {
+            color: var(--gray-900);
+            line-height: 1.7;
+        }
+
+        /* Video Cards */
+        .video-card {
+            background: var(--white);
+            border-radius: 1rem;
+            padding: 3rem 2rem;
+            text-align: center;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .video-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, transparent 0%, rgba(75, 96, 121, 0.05) 100%);
+            pointer-events: none;
+        }
+
+        .video-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-xl);
+        }
+
+        .video-icon {
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+            display: block;
+        }
+
+        .video-link {
+            background: var(--primary-gradient);
+            color: var(--white);
+            padding: 1rem 2rem;
+            text-decoration: none;
+            border-radius: 0.75rem;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-top: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .video-link:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        /* Dedications Section */
+        .dedications {
+            background: var(--sand-gradient);
+        }
+
+        .category-card {
+            background: var(--white);
+            border-radius: 1rem;
+            padding: 2rem;
+            box-shadow: var(--shadow);
+            margin-bottom: 2rem;
+        }
+
+        .category-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--chabad-blue);
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 3px solid var(--chabad-sand);
+            font-family: 'Playfair Display', serif;
+        }
+
+        .dedication-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            padding: 1rem 0;
+            border-bottom: 1px solid var(--gray-200);
+            transition: all 0.2s ease;
+        }
+
+        .dedication-item:hover {
+            background: var(--gray-50);
+            padding-left: 1rem;
+            border-radius: 0.5rem;
+        }
+
+        .dedication-item:last-child {
+            border-bottom: none;
+        }
+
+        .dedication-name {
+            font-weight: 500;
+            color: var(--gray-900);
+            flex: 1;
+        }
+
+        .dedication-price {
+            font-weight: 700;
+            color: var(--chabad-blue);
+            margin-left: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .dedication-status {
+            font-style: italic;
+            color: #dc2626;
+            font-size: 0.9rem;
+            margin-top: 0.5rem;
+        }
+
+        .notice-box {
+            background: var(--white);
+            border: 1px solid var(--gray-200);
+            border-left: 4px solid var(--chabad-blue);
+            border-radius: 0.75rem;
+            padding: 2rem;
+            margin-bottom: 3rem;
+            text-align: center;
+            box-shadow: var(--shadow);
+        }
+
+        /* Square Feet Section */
+        .square-feet {
+            background: var(--primary-gradient);
+            color: var(--white);
+            text-align: center;
+        }
+
+        .square-feet .section-title {
+            color: var(--white);
+        }
+
+        .square-feet-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .stat-label {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        /* Items Section */
+        .items {
+            background: var(--gray-50);
+        }
+
+        .items-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .priority-card {
+            background: var(--white);
+            border-radius: 1rem;
+            padding: 2rem;
+            box-shadow: var(--shadow);
+            margin-bottom: 2rem;
+        }
+
+        .priority-high {
+            border-left: 4px solid #dc2626;
+        }
+
+        .priority-medium {
+            border-left: 4px solid #f59e0b;
+        }
+
+        .priority-future {
+            border-left: 4px solid #10b981;
+        }
+
+        .priority-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+
+        .priority-icon {
+            width: 3rem;
+            height: 3rem;
+            border-radius: 0.75rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .priority-high .priority-icon {
+            background: #fef2f2;
+            color: #dc2626;
+        }
+
+        .priority-medium .priority-icon {
+            background: #fffbeb;
+            color: #f59e0b;
+        }
+
+        .priority-future .priority-icon {
+            background: #f0fdfa;
+            color: #10b981;
+        }
+
+        .item-list {
+            list-style: none;
+            margin: 2rem 0;
+        }
+
+        .item-list li {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+            border-bottom: 1px solid var(--gray-200);
+        }
+
+        .item-list li:last-child {
+            border-bottom: none;
+        }
+
+        .item-price {
+            font-weight: 700;
+            color: var(--chabad-blue);
+        }
+
+        /* Plans Section */
+        .plans-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 3rem;
+        }
+
+        .plan-card {
+            background: var(--white);
+            border-radius: 1rem;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+        }
+
+        .plan-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-xl);
+        }
+
+        .plan-placeholder {
+            height: 300px;
+            background: var(--primary-gradient);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-weight: 600;
+            font-size: 1.25rem;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .plan-content {
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .pdf-link {
+            background: var(--primary-gradient);
+            color: var(--white);
+            padding: 1rem 2rem;
+            text-decoration: none;
+            border-radius: 0.75rem;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-top: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .pdf-link:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        /* Animations */
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: var(--white);
+                flex-direction: column;
+                padding: 1rem;
+                box-shadow: var(--shadow-lg);
+                border-top: 1px solid var(--gray-200);
+            }
+
+            .nav-menu.active {
+                display: flex;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .hero {
+                padding: 6rem 0 4rem;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .btn {
+                width: 100%;
+                max-width: 300px;
+                justify-content: center;
+            }
+
+            .section {
+                padding: 3rem 0;
+            }
+
+            .grid-2 {
+                grid-template-columns: 1fr;
+            }
+
+            .dedication-item {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.5rem;
+            }
+
+            .dedication-price {
+                margin-left: 0;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .plans-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Accessibility */
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            ::before,
+            ::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+
+        /* Focus styles */
+        .nav-link:focus,
+        .btn:focus,
+        .video-link:focus,
+        .pdf-link:focus {
+            outline: 2px solid var(--chabad-blue);
+            outline-offset: 2px;
+        }
+
+        /* High contrast mode */
+        @media (prefers-contrast: high) {
+            :root {
+                --chabad-blue: #2c3e50;
+                --chabad-gray: #34495e;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="#hero" class="nav-logo">Chabad Chayil</a>
+            
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="#photos" class="nav-link" data-section="photos">Photos</a></li>
+                <li><a href="#videos" class="nav-link" data-section="videos">Videos</a></li>
+                <li><a href="#dedications" class="nav-link" data-section="dedications">Dedications</a></li>
+                <li><a href="#square-feet" class="nav-link" data-section="square-feet">Square Feet</a></li>
+                <li><a href="#items" class="nav-link" data-section="items">Items</a></li>
+                <li><a href="#plans" class="nav-link" data-section="plans">Plans</a></li>
+                <li><a href="https://buildchabadchayil.org" class="donate-btn" target="_blank">Donate Now</a></li>
+            </ul>
+
+            <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Toggle navigation menu">
+                ☰
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+        <div class="hero-content">
+            <h1>Build Chabad Chayil</h1>
+            <h2>Hand in Hand. Foot by Foot!</h2>
+            <p>
+                Join us in creating a sacred space for our growing community. Every contribution helps build a home for Jewish life, learning, and connection in our beautiful new 5-story community center.
+            </p>
+            
+            <div class="hero-buttons">
+                <a href="https://buildchabadchayil.org" class="btn btn-primary" target="_blank">
+                    ❤️ Donate Now
+                </a>
+                <a href="#dedications" class="btn btn-secondary" data-section="dedications">
+                    ⭐ Dedicate an Item
+                </a>
+            </div>
+
+            <!-- Progress Card -->
+            <div class="progress-card">
+                <div class="progress-header">
+                    <span class="progress-label">Campaign Progress</span>
+                    <span class="progress-percentage">72%</span>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progress-fill"></div>
+                </div>
+                <div class="progress-amounts">
+                    <span>Raised: <span class="amount-raised">$720,000</span></span>
+                    <span>Goal: <span class="amount-raised">$1,000,000</span></span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Photos Section -->
+    <section class="section" id="photos">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Construction Progress</h2>
+                <p class="section-subtitle">
+                    Watch our vision come to life through these construction milestones and community moments.
+                </p>
+            </div>
+
+            <div class="grid grid-3">
+                <div class="card">
+                    <div style="height: 250px; background: linear-gradient(45deg, #4b6079, #5a7084); display: flex; align-items: center; justify-content: center; color: white; font-weight: 600; text-align: center; padding: 2rem;">
+                        Latest Construction Photos<br><small>Foundation & Framework Complete</small>
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">Foundation Complete</h3>
+                        <p class="card-date">December 2024</p>
+                        <p class="card-text">
+                            Our building foundation is now complete and we're moving forward with the structural framework.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div style="height: 250px; background: linear-gradient(45deg, #5a7084, #6b8199); display: flex; align-items: center; justify-content: center; color: white; font-weight: 600; text-align: center; padding: 2rem;">
+                        Community Groundbreaking<br><small>Historic Moment Captured</small>
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">Groundbreaking Ceremony</h3>
+                        <p class="card-date">October 2024</p>
+                        <p class="card-text">
+                            Community members gathered to celebrate the official groundbreaking of our new building.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div style="height: 250px; background: linear-gradient(45deg, #6b8199, #7c92ae); display: flex; align-items: center; justify-content: center; color: white; font-weight: 600; text-align: center; padding: 2rem;">
+                        Architectural Plans<br><small>Final Design Approved</small>
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">Design Finalization</h3>
+                        <p class="card-date">September 2024</p>
+                        <p class="card-text">
+                            Final architectural plans approved, featuring modern design with traditional Jewish elements.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div style="height: 250px; background: linear-gradient(45deg, #7c92ae, #8da3c3); display: flex; align-items: center; justify-content: center; color: white; font-weight: 600; text-align: center; padding: 2rem;">
+                        Site Preparation<br><small>Ready for Construction</small>
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">Site Preparation</h3>
+                        <p class="card-date">August 2024</p>
+                        <p class="card-text">
+                            Site clearing and preparation work completed, ready for foundation pouring.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div style="height: 250px; background: linear-gradient(45d, #8da3c3, #9eb4d8); display: flex; align-items: center; justify-content: center; color: white; font-weight: 600; text-align: center; padding: 2rem;">
+                        Campaign Launch<br><small>Community Response</small>
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">Campaign Launch</h3>
+                        <p class="card-date">July 2024</p>
+                        <p class="card-text">
+                            Official launch of our building campaign with overwhelming community support and enthusiasm.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div style="height: 250px; background: linear-gradient(45deg, #9eb4d8, #afc5ed); display: flex; align-items: center; justify-content: center; color: white; font-weight: 600; text-align: center; padding: 2rem;">
+                        Future Vision<br><small>Completed Building Rendering</small>
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">Completion Vision</h3>
+                        <p class="card-date">Target: 2025</p>
+                        <p class="card-text">
+                            Artist's rendering of our completed 5-story community center with all amenities.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Videos Section -->
+    <section class="section" id="videos">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Construction Cam</h2>
+                <p class="section-subtitle">
+                    Watch today's construction progress and get excited each step of the way!
+                </p>
+            </div>
+
+            <div class="grid grid-3">
+                <div class="video-card">
+                    <div class="video-icon">📺</div>
+                    <h3 class="card-title">YouTube Channel</h3>
+                    <p class="card-text">
+                        Daily construction updates and time-lapse videos showing our progress.
+                    </p>
+                    <a href="https://bit.ly/2NLCfce" class="video-link" target="_blank">
+                        ▶️ Watch on YouTube
+                    </a>
+                </div>
+
+                <div class="video-card">
+                    <div class="video-icon">📘</div>
+                    <h3 class="card-title">Facebook Page</h3>
+                    <p class="card-text">
+                        Live updates and community discussions about our building progress.
+                    </p>
+                    <a href="https://bit.ly/2XRaHJ9" class="video-link" target="_blank">
+                        👀 View on Facebook
+                    </a>
+                </div>
+
+                <div class="video-card">
+                    <div class="video-icon">🎬</div>
+                    <h3 class="card-title">Construction History</h3>
+                    <p class="card-text">
+                        Complete archive of construction progress from day one to completion.
+                    </p>
+                    <a href="/article.asp?AID=5980108" class="video-link">
+                        📖 View History
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Dedications Section -->
+    <section class="section dedications" id="dedications">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Dedication Opportunities</h2>
+                <p class="section-subtitle">
+                    Honor your loved ones with a meaningful dedication to our sacred space.
+                </p>
+            </div>
+
+            <div class="notice-box">
+                <p><strong>Important:</strong> Dedications are upgradeable, as long as the upgrade is still available.</p>
+                <p style="margin-top: 0.5rem;">
+                    <em>Any dedication whose price goes up after they already dedicated it, gets it for the original price, even if they haven't yet paid in full.</em>
+                </p>
+            </div>
+
+            <div class="grid grid-2">
+                <!-- Major Building Dedications -->
+                <div class="category-card">
+                    <h3 class="category-title">Major Building Dedications</h3>
+                    <div class="dedication-item">
+                        <div class="dedication-name">Campus Dedication</div>
+                        <div class="dedication-price">$6.13M+</div>
+                    </div>
+                    <div class="dedication-item">
+                        <div class="dedication-name">Center Dedication</div>
+                        <div class="dedication-price">$2.601M+</div>
+                    </div>
+                    <div class="dedication-item">
+                        <div class="dedication-name">Multipurpose Room / Social Hall</div>
+                        <div class="dedication-price">$770,000+</div>
+                    </div>
+                    <div class="dedication-item">
+                        <div class="dedication-name">8,000 SF Rooftop Park</div>
+                        <div class="dedication-price">$613,000+</div>
+                    </div>
+                    <div class="dedication-item">
+                        <div class="dedication-name">Library / Beit Medrash</div>
+                        <div class="dedication-price">$540,000+</div>
+                    </div>
+                </div>
+
+                <!-- Floor & Area Dedications -->
+                <div class="category-card">
+                    <h3 class="category-title">Floor & Area Dedications</h3>
+                    <div class="dedication-item">
+                        <div>
+                            <div class="dedication-name">Building Founder Dedication</div>
+                            <div class="dedication-status">Dedicated in honor of Alberto Azout Zafrani z'l</div>
+                        </div>
+                    </div>
+                    <div class="dedication-item">
+                        <div>
+                            <div class="dedication-name">First Floor</div>
+                            <div class="dedication-status">Dedicated by David & Debbie Mendal and Family</div>
+                        </div>
+                    </div>
+                    <div class="dedication-item">
+                        <div class="dedication-name">Second Floor Dedication</div>
+                        <div class="dedication-price">$450,000+</div>
+                    </div>
+                    <div class="dedication-item">
+                        <div class="dedication-name">3rd/4th Floor Dedication</div>
+                        <div class="dedication-price">$360,000+</div>
+                    </div>
+                    <div class="dedication-item">
+                        <div class="dedication-name">Children's Library</div>
+                        <div class="dedication-price">$360,000+</div>
+                    </div>
+                </div>
+
+                <!-- Special Areas & Features -->
+                <div class="category-card">
+                    <h3 class="category-title">Special Areas & Features</h3>
+                    <div class="dedication-item">
+                        <div>
+                            <div class="dedication-name">Rooftop Kitchen BBQ Area</div>
+                            <div class="dedication-status">Dedicated by Alan Grinberg in loving memory of his father</div>
+                        </div>
+                    </div>
+                    <div class="dedication-item">
+                        <div>
+                            <div class="dedication-name">Indoor Themed Playground</div>
+                            <div class="dedication-status">Dedicated in loving memory of Batsheva bat Mordecahi & Eliyahu ben Shlomo</div>
+                        </div>
+                    </div>
+                    <div class="dedication-item">
+                        <div>
+                            <div class="dedication-name">Lobby</div>
+                            <div class="dedication-status">Dedicated by Barry Snyder, Esq</div>
+                        </div>
+                    </div>
+                    <div class="dedication-item">
+                        <div class="dedication-name">Commercial Meat Kitchen</div>
+                        <div class="dedication-price">$250,000+</div>
+                    </div>
+                    <div class="dedication-item">
+                        <div class="dedication-name">Commercial Dairy Kitchen</div>
+                        <div class="dedication-price">$101,000+</div>
+                    </div>
+                </div>
+
+                <!-- Classrooms & Education -->
+                <div class="category-card">
+                    <h3 class="category-title">Classrooms & Education</h3>
+                    <div class="dedication-item">
+                        <div class="dedication-name">Art Classroom</div>
+                        <div class="dedication-price">$72,000+</div>
+                    </div>
+                    <div class="dedication-item">
+                        <div class="dedication-name">Music Classroom</div>
+                        <div class="dedication-price">$72,000+</div>
+                    </div>
+                    <div class="dedication-item">
+                        <div class="dedication-name">Classroom (12/14 Available)</div>
+                        <div class="dedication-price">$54,000+</div>
+                    </div>
+                    <div class="dedication-item">
+                        <div>
+                            <div class="dedication-name">Classroom</div>
+                            <div class="dedication-status">Dedicated in memory of Zvi Yoram ben Avraham Halevi</div>
+                        </div>
+                    </div>
+                    <div class="dedication-item">
+                        <div class="dedication-name">Tutoring Room</div>
+                        <div class="dedication-price">$24,000+</div>
+                    </div>
+                </div>
+
+                <!-- Program Dedications -->
+                <div class="category-card">
+                    <h3 class="category-title">Program Dedications</h3>
+                    <div class="dedication-item">
+                        <div class="dedication-name">Your Name CHAP</div>
+                        <div class="dedication-price">$1.8M</div>
+                    </div>
+                    <div class="dedication-item">
+                        <div class="dedication-name">Your Name Preschool</div>
+                        <div class="dedication-price">$1.8M</div>
+                    </div>
+                    <div class="dedication-item">
+                        <div class="dedication-name">Your Name Summer Camp</div>
+                        <div class="dedication-price">$1.3M</div>
+                    </div>
+                    <div class="dedication-item">
+                        <div class="dedication-name">Your Name CTeen</div>
+                        <div class="dedication-price">$613K</div>
+                    </div>
+                    <div class="dedication-item">
+                        <div class="dedication-name">Your Name Seniors</div>
+                        <div class="dedication-price">$613K</div>
+                    </div>
+                </div>
+
+                <!-- Smaller Dedications -->
+                <div class="category-card">
+                    <h3 class="category-title">Smaller Dedications</h3>
+                    <div class="dedication-item">
+                        <div class="dedication-name">Mezuzah (28/30 Available)</div>
+                        <div class="dedication-price">$18,000+</div>
+                    </div>
+                    <div class="dedication-item">
+                        <div class="dedication-name">Library Bookcase (23/28 Available)</div>
+                        <div class="dedication-price">$6,130+</div>
+                    </div>
+                    <div class="dedication-item">
+                        <div class="dedication-name">Bathroom Stall (24/26 Available)</div>
+                        <div class="dedication-price">$2,200+</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Special Campaign Dedication -->
+            <div style="text-align: center; margin-top: 3rem;">
+                <div class="category-card" style="max-width: 600px; margin: 0 auto;">
+                    <h3 style="color: var(--chabad-blue); margin-bottom: 1rem; font-size: 1.5rem;">
+                        Building Campaign Name - $260,100+
+                    </h3>
+                    <p style="color: var(--chabad-gray); font-style: italic;">
+                        Website, Brochure, Social Media, Marketing & Campaign Integrated Smart Wall
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Square Feet Section -->
+    <section class="section square-feet" id="square-feet">
+        <div class="container">
+            <div class="square-feet-content">
+                <h2 class="section-title">Square Feet Campaign</h2>
+                <p style="font-size: 1.25rem; margin-bottom: 3rem; line-height: 1.7;">
+                    Join our square foot campaign and be part of building our community's future, one square foot at a time. Every square foot makes a difference!
+                </p>
+                
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <div class="stat-number">$100</div>
+                        <div class="stat-label">per square foot</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">8,500</div>
+                        <div class="stat-label">total square feet</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">3,240</div>
+                        <div class="stat-label">already sponsored</div>
+                    </div>
+                </div>
+
+                <a href="https://buildchabadchayil.org" class="btn btn-primary" target="_blank" style="font-size: 1.25rem; padding: 1.25rem 3rem;">
+                    🏗️ Dedicate Square Feet
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Items Section -->
+    <section class="section items" id="items">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Construction Items Needed</h2>
+                <p class="section-subtitle">
+                    We need your help with construction materials, services, and support. Please let us know in what capacity you can help - Materials, Services, Financially, Loans, Fundraising...
+                </p>
+            </div>
+
+            <div class="items-content">
+                <div class="grid grid-3">
+                    <!-- High Priority Items -->
+                    <div class="priority-card priority-high">
+                        <div class="priority-header">
+                            <div class="priority-icon">🚨</div>
+                            <div>
+                                <h3 style="color: var(--chabad-blue); font-weight: 600;">High Priority</h3>
+                                <p style="color: var(--chabad-gray); font-size: 0.9rem;">Urgently needed items</p>
+                            </div>
+                        </div>
+                        <ul class="item-list">
+                            <li>
+                                <span>HVAC System</span>
+                                <span class="item-price">$25,000</span>
+                            </li>
+                            <li>
+                                <span>Electrical Installation</span>
+                                <span class="item-price">$18,000</span>
+                            </li>
+                            <li>
+                                <span>Plumbing System</span>
+                                <span class="item-price">$15,000</span>
+                            </li>
+                            <li>
+                                <span>Windows & Doors</span>
+                                <span class="item-price">$12,000</span>
+                            </li>
+                        </ul>
+                        <a href="/article.asp?AID=5271915" class="btn" style="background: #dc2626; color: white; width: 100%;">
+                            Sponsor High Priority Item
+                        </a>
+                    </div>
+
+                    <!-- Medium Priority Items -->
+                    <div class="priority-card priority-medium">
+                        <div class="priority-header">
+                            <div class="priority-icon">⚠️</div>
+                            <div>
+                                <h3 style="color: var(--chabad-blue); font-weight: 600;">Medium Priority</h3>
+                                <p style="color: var(--chabad-gray); font-size: 0.9rem;">Important upcoming needs</p>
+                            </div>
+                        </div>
+                        <ul class="item-list">
+                            <li>
+                                <span>Flooring Materials</span>
+                                <span class="item-price">$10,000</span>
+                            </li>
+                            <li>
+                                <span>Kitchen Equipment</span>
+                                <span class="item-price">$8,500</span>
+                            </li>
+                            <li>
+                                <span>Lighting Fixtures</span>
+                                <span class="item-price">$7,200</span>
+                            </li>
+                            <li>
+                                <span>Security System</span>
+                                <span class="item-price">$6,000</span>
+                            </li>
+                        </ul>
+                        <a href="/article.asp?AID=5271915" class="btn" style="background: #f59e0b; color: white; width: 100%;">
+                            Sponsor Medium Priority Item
+                        </a>
+                    </div>
+
+                    <!-- Future Needs -->
+                    <div class="priority-card priority-future">
+                        <div class="priority-header">
+                            <div class="priority-icon">🔮</div>
+                            <div>
+                                <h3 style="color: var(--chabad-blue); font-weight: 600;">Future Needs</h3>
+                                <p style="color: var(--chabad-gray); font-size: 0.9rem;">Planning ahead items</p>
+                            </div>
+                        </div>
+                        <ul class="item-list">
+                            <li>
+                                <span>Furniture & Seating</span>
+                                <span class="item-price">$5,500</span>
+                            </li>
+                            <li>
+                                <span>Audio/Visual Equipment</span>
+                                <span class="item-price">$4,800</span>
+                            </li>
+                            <li>
+                                <span>Landscaping</span>
+                                <span class="item-price">$3,200</span>
+                            </li>
+                            <li>
+                                <span>Signage</span>
+                                <span class="item-price">$2,100</span>
+                            </li>
+                        </ul>
+                        <a href="/article.asp?AID=5271915" class="btn" style="background: #10b981; color: white; width: 100%;">
+                            Sponsor Future Item
+                        </a>
+                    </div>
+                </div>
+
+                <div style="margin-top: 3rem;">
+                    <a href="/article.asp?AID=5271915" class="btn" style="background: var(--chabad-blue); color: white; font-size: 1.25rem; padding: 1.25rem 3rem;">
+                        📋 View Complete Items List
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Plans Section -->
+    <section class="section" id="plans">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Building Plans</h2>
+                <p class="section-subtitle">
+                    View our comprehensive building plans and architectural drawings for the new 5-story community center.
+                </p>
+            </div>
+
+            <div class="plans-grid">
+                <div class="plan-card">
+                    <div class="plan-placeholder">
+                        📋 Building Blueprints<br>
+                        <small>Detailed Architectural Plans</small>
+                    </div>
+                    <div class="plan-content">
+                        <h3 class="card-title">Architectural Plans</h3>
+                        <p class="card-text">
+                            Complete architectural blueprints and specifications for all five floors of our new building.
+                        </p>
+                        <a href="#" class="pdf-link">
+                            👁️ View PDF Plans
+                        </a>
+                    </div>
+                </div>
+
+                <div class="plan-card">
+                    <div class="plan-placeholder">
+                        🏗️ Floor Layouts<br>
+                        <small>Room by Room Design</small>
+                    </div>
+                    <div class="plan-content">
+                        <h3 class="card-title">Floor Plans</h3>
+                        <p class="card-text">
+                            Detailed floor plans showing room layouts, dimensions, and functionality for each level.
+                        </p>
+                        <a href="#" class="pdf-link">
+                            📐 View Floor Plans
+                        </a>
+                    </div>
+                </div>
+
+                <div class="plan-card">
+                    <div class="plan-placeholder">
+                        🎨 Design Renderings<br>
+                        <small>3D Visualizations</small>
+                    </div>
+                    <div class="plan-content">
+                        <h3 class="card-title">3D Renderings</h3>
+                        <p class="card-text">
+                            Beautiful 3D renderings showing the completed building exterior and interior spaces.
+                        </p>
+                        <a href="#" class="pdf-link">
+                            🖼️ View Renderings
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Building Stats -->
+            <div style="margin-top: 4rem;">
+                <div class="grid grid-3">
+                    <div class="category-card" style="text-align: center;">
+                        <h4 style="color: var(--chabad-blue); margin-bottom: 1rem;">Total Area</h4>
+                        <p style="font-size: 2rem; font-weight: 700; color: var(--chabad-gray);">8,500 sq ft</p>
+                    </div>
+                    <div class="category-card" style="text-align: center;">
+                        <h4 style="color: var(--chabad-blue); margin-bottom: 1rem;">Capacity</h4>
+                        <p style="font-size: 2rem; font-weight: 700; color: var(--chabad-gray);">500 people</p>
+                    </div>
+                    <div class="category-card" style="text-align: center;">
+                        <h4 style="color: var(--chabad-blue); margin-bottom: 1rem;">Parking</h4>
+                        <p style="font-size: 2rem; font-weight: 700; color: var(--chabad-gray);">50 spaces</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Navigation functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const navbar = document.getElementById('navbar');
+            const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+            const navMenu = document.getElementById('nav-menu');
+            const navLinks = document.querySelectorAll('.nav-link[data-section]');
+            const sections = document.querySelectorAll('.section');
+            const progressFill = document.getElementById('progress-fill');
+
+            // Mobile menu toggle
+            mobileMenuBtn.addEventListener('click', function() {
+                navMenu.classList.toggle('active');
+            });
+
+            // Navigation scroll effect
+            window.addEventListener('scroll', function() {
+                if (window.scrollY > 50) {
+                    navbar.classList.add('scrolled');
+                } else {
+                    navbar.classList.remove('scrolled');
+                }
+            });
+
+            // Navigation smooth scroll (optional - sections now all visible)
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const sectionId = this.getAttribute('data-section');
+                    const targetSection = document.getElementById(sectionId);
+                    
+                    if (targetSection) {
+                        targetSection.scrollIntoView({ 
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                        
+                        // Update active nav link
+                        navLinks.forEach(l => l.classList.remove('active'));
+                        this.classList.add('active');
+                        
+                        // Close mobile menu if open
+                        navMenu.classList.remove('active');
+                    }
+                });
+            });
+
+            // Animate progress bar
+            setTimeout(() => {
+                progressFill.style.width = '72%';
+            }, 1500);
+
+            // Smooth scroll for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    const href = this.getAttribute('href');
+                    const sectionId = href.substring(1);
+                    
+                    if (sectionId && document.getElementById(sectionId)) {
+                        e.preventDefault();
+                        
+                        if (sectionId === 'hero') {
+                            window.scrollTo({ top: 0, behavior: 'smooth' });
+                        } else {
+                            showSection(sectionId);
+                        }
+                    }
+                });
+            });
+
+            // Add intersection observer for animations
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver(function(entries) {
+                entries.forEach(function(entry) {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, observerOptions);
+
+            // Observe all animatable elements
+            const animatedElements = document.querySelectorAll('.card, .video-card, .category-card, .priority-card, .plan-card');
+            animatedElements.forEach(function(element) {
+                observer.observe(element);
+            });
+        });
+    </script>
+</body>
+</html>
